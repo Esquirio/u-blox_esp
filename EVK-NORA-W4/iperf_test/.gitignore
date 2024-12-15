@@ -3,5 +3,6 @@ sdkconfig*
 sdkconfig.*
 __pycache__/*
 *.code-workspace
+.vscode/
 .vscode/*
 dependencies.lock

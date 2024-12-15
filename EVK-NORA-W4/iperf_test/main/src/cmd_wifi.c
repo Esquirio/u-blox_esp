@@ -135,7 +135,7 @@ static void disconnect_handler(void *arg, esp_event_base_t event_base,
     xEventGroupSetBits(wifi_event_group, DISCONNECTED_BIT);
 }
 
-void initialise_wifi(void)
+void initialize_wifi(void)
 {
     esp_log_level_set("wifi", ESP_LOG_WARN);
     static bool initialized = false;
@@ -246,6 +246,10 @@ static int wifi_cmd_sta(int argc, char **argv)
     ESP_LOGI(TAG, "sta connecting to '%s'", sta_args.ssid->sval[0]);
     ESP_ERROR_CHECK(esp_wifi_set_ps(WIFI_PS_NONE));
     wifi_cmd_sta_join(sta_args.ssid->sval[0], sta_args.password->sval[0], false);
+    
+    int rssi = 0;
+    ESP_ERROR_CHECK(esp_wifi_sta_get_rssi(&rssi));
+    ESP_LOGI(TAG, "RSSI: %d", rssi);
     return 0;
 }
 

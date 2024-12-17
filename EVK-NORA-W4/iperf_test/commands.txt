@@ -1,12 +1,25 @@
+Binary files: 
+
+Name                                        Address
+C:\Firmwares\NORA-W40\bootloader.bin        0x0
+C:\Firmwares\NORA-W40\partition-table.bin   0x8000
+C:\Firmwares\NORA-W40\iperf_test.bin        0x10000
+
+*****************************************************************
 Module access point
 ap ubx_text 12345678
+iperf -s
+or
 iperf -s -u -p 5001 -i 5 -t 20 -b 30
 
 
 Module station
 sta ubx_text 12345678
+iperf -c 192.168.4.1
+or
 iperf -c 192.168.4.1 -u -p 5001 -i 5 -t 20 -b 30
 
+iperf [-suVa] [-c <ip>] [-p <port>] [-l <length>] [-i <interval>] [-t <time>] [-b <bandwidth>]
 
 *****************************************************************
 Access point
